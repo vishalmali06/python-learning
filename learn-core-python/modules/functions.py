@@ -21,7 +21,6 @@ veera_total = calculate_sum(veera_exp_list)
 print("Vishal's total expenses:", vishal_total)
 print("Veera's total expenses:", veera_total)
 
-
 # ---------------------------------------------------
 # Program 2: Understanding Local vs Global Variables
 # This program shows that a variable created inside
@@ -31,17 +30,17 @@ print("Veera's total expenses:", veera_total)
 
 total = 0
 
+
 def sum(a, b):
     print("a:", a)
     print("b:", b)
-    total = a + b   # This 'total' is a LOCAL variable
+    total = a + b  # This 'total' is a LOCAL variable
     print("Total inside function:", total)
     return total
 
 
 n = sum(b=2, a=3)
 print("Total outside the function:", total)
-
 
 # ---------------------------------------------------
 # Program 3: Function with Default Argument
@@ -52,13 +51,22 @@ print("Total outside the function:", total)
 
 total = 0
 
+
 def sum(a, b=0):
     print("a:", a)
     print("b:", b)
-    total = a + b   # Local variable
+    total = a + b  # Local variable
     print("Total inside function:", total)
     return total
 
 
 n = sum(5, 7)
 print("Total outside the function:", n)
+
+
+def calculate_tringle_area(base, height):
+    return (base * height) / 2
+
+
+def calculate_square_area(length):
+    return length * length
