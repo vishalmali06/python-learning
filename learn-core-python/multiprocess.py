@@ -1,5 +1,5 @@
 import time
-import threading
+import multiprocessing
 
 
 def timeit(func):
@@ -14,32 +14,31 @@ def timeit(func):
 
 def calc_square(numbers):
     print("Square calculation started")
-    result = [n * n for n in range(numbers)]
+    time.sleep(1)
+    result = [n * n for n in numbers]
     print("Square calculation finished")
     return result
 
 
 def calc_cube(numbers):
     print("Cube calculation started")
-    result = [n ** 3 for n in range(numbers)]
+    time.sleep(1)
+    result = [n ** 3 for n in numbers]
     print("Cube calculation finished")
     return result
 
 
 @timeit
-def run_with_threads(numbers):
-    # Create threads
-    t1 = threading.Thread(target=calc_square, args=(numbers,))
-    t2 = threading.Thread(target=calc_cube, args=(numbers,))
+def run_with_processes(numbers_list):
+    p1 = multiprocessing.Process(target=calc_square, args=(numbers_list,))
+    p2 = multiprocessing.Process(target=calc_cube, args=(numbers_list,))
 
-    # Start threads
-    t1.start()
-    t2.start()
+    p1.start()
+    p2.start()
 
-    # Wait for both threads to finish
-    t1.join()
-    t2.join()
+    p1.join()
+    p2.join()
 
 
-# Parallel execution
-run_with_threads(1_000_000)
+if __name__ == "__main__":
+    run_with_processes([2, 3, 4, 5, 6, 7])
