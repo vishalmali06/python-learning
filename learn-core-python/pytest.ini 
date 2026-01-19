@@ -1,0 +1,6 @@
+[pytest]
+markers =
+    windows: tests specific to Windows platform
+    mac: tests specific to macOS platform
+filterwarnings =
+    ignore::pytest.PytestUnknownMarkWarning
